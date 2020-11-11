@@ -5,21 +5,9 @@
 @inject IJSRuntime JS
 
 <div class="main">
-    <ul class="pizza-cards">
-        @if (specials != null)
-        {
-            @foreach (var special in specials)
-            {
-                <li @onclick="@(() => OrderState.ShowConfigurePizzaDialog(special))" style="background-image: url('@special.ImageUrl')">
-                    <div class="pizza-info">
-                        <span class="title">@special.Name</span>
-                        @special.Description
-                        <span class="price">@special.GetFormattedBasePrice()</span>
-                    </div>
-                </li>
-            }
-        }
-    </ul>
+    <PizzaCardList 
+        OnCardClick="OrderState.ShowConfigurePizzaDialog"
+        specials="specials"></PizzaCardList>
 
     <TemplatedDialog Show="OrderState.ShowingConfigureDialog">
         <ConfigurePizzaDialog Pizza="OrderState.ConfiguringPizza"

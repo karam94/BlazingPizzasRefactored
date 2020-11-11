@@ -1,0 +1,15 @@
+﻿<li @onclick="@OnClick" style="background-image: url('@ImageUrl')">
+    <div class="pizza-info">
+        <span class="title">@Name</span>
+        @Description
+        <span class="price">@Price</span>
+    </div>
+</li>
+
+@code {
+    [Parameter] public Action OnClick { get; set; }
+    [Parameter] public String ImageUrl { get; set; }
+    [Parameter] public String Name { get; set; }
+    [Parameter] public String Description { get; set; }
+    [Parameter] public String Price { get; set; }
+}

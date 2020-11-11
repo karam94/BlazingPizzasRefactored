@@ -1,0 +1,20 @@
+﻿@using BlazingPizza
+
+<ul class="pizza-cards">
+    @if (specials != null)
+    {
+        @foreach (var special in specials)
+        {
+            <PizzaCard OnClick="@(() => OnCardClick.InvokeAsync(special))"
+                       ImageUrl="@special.ImageUrl"
+                       Name="@special.Name"
+                       Description="@special.Description"
+                       Price="@special.GetFormattedBasePrice()" />
+        }
+    }
+</ul>
+
+@code {
+    [Parameter] public List<PizzaSpecial> specials { get; set; }
+    [Parameter] public EventCallback<PizzaSpecial> OnCardClick { get; set; }
+}
